@@ -2,10 +2,10 @@ require 'watir'
 #require_relative './fast_selenium.rb'
 require 'axe/cucumber/step_definitions'
 
-username = ENV['LT_USERNAME']
-accessToken = ENV['LT_ACCESS_KEY']
-gridUrl = "hub.lambdatest.com/wd/hub"
-url = "https://" + username + ":" + accessToken + "@" + gridUrl
+#String username = ENV['LT_USERNAME']
+#String accessToken = ENV['LT_ACCESS_KEY']
+#String gridUrl = "hub.lambdatest.com/wd/hub"
+String url = "https://mudassars:vVzvPUgOSfn5UprIpNrfym8JMKeFmTJwatLAwLNM5WPiACU0dM@hub.lambdatest.com/wd/hub"
 options = Selenium::WebDriver::Options.chrome
 options.browser_version = "97.0"
 options.platform_name = "Windows 10"
