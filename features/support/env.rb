@@ -1,8 +1,9 @@
 require 'watir'
 #require_relative './fast_selenium.rb'
+require 'axe/cucumber/step_definitions'
 
-username = "username"
-accessToken = "accesskey"
+username = ENV['LT_USERNAME']
+accessToken = ENV['LT_ACCESS_KEY']
 gridUrl = "hub.lambdatest.com/wd/hub"
 url = "https://" + username + ":" + accessToken + "@" + gridUrl
 options = Selenium::WebDriver::Options.chrome
@@ -18,8 +19,15 @@ options.add_option('LT:Options', lt_options);
 browser_name = ENV['BROWSER_NAME'] || 'chrome'
 driver= Watir::Browser.new browser_name.to_sym, url: url, options: options
 
+Axe.configure do |c|
+  c.page = :driver
+
+  # axe-matchers can also be given the actual browser/page instance if it's available
+  #   c.page = @page
+end
+
 Before do |scenario|
-  @browser = driver
+  @page = driver
 end
 
 at_exit do
